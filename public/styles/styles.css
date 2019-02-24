@@ -1,0 +1,30 @@
+*{
+  box-sizing: border-box;
+}
+.list-group-item {
+  line-height: 2.5;
+}
+
+/* #body {
+  background-image: url('/images/bhawin-jagad-710758-unsplash.jpg');
+  background-size:cover;
+  background-position: center;
+} */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container-top {
+  margin-top: 450px;
+}
+
+.article-blocks {
+  border: 2px solid black;
+}
+
+#headline-div {
+  background: blue;
+  padding: 20px 20px; 
+}
