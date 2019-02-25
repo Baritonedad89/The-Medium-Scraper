@@ -6,8 +6,8 @@
           <a href="/" class="brand-logo black-text"><span style="font-family: 'Abril Fatface', cursive; font-size: 28px;
 ">Medium</span> | <span style="font-size: 24px">Scraper</span></a>
           <ul class="right hide-on-med-and-down">
-          <li><a href="#" class="black-text">Home</a></li>
-          <li><a href="#" class="black-text">Saved Articles</a></li>
+          <li><a href="/" class="black-text">Home</a></li>
+          <li><a  id="saved-articles-btn" class="black-text">Saved Articles</a></li>
           <li><a class="waves-effect waves-light btn" id="scrape-btn">Scrape Articles!</a></li>
           <li><a class="waves-effect waves-light btn">Clear Articles!</a></li>
         </ul>
@@ -25,8 +25,8 @@
 
 
       {{#each articles}}
-      {{#if this.headline}}
-      <div class="row">
+      {{#unless this.isSaved}}
+      <div class="row" id="row-{{this._id}}">
         <div class="col l12">
           <div class="card light-blue darken-4">
             <div class="card-content white-text">
@@ -34,12 +34,12 @@
               <p data-id="{{this._id}}">{{this.summary}}</p>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn" id="save-btn" data-id={{this._id}}>Save Article</a>
+              <a class="waves-effect waves-light btn" id="save-btn" isSaved={{this.isSaved}} data-id={{this._id}}>Save Article</a>
 
             </div>
           </div>
         </div>
       </div>
-      {{/if}}
+      {{/unless}}
       {{/each}}
       

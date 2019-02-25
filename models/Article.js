@@ -28,7 +28,13 @@ var ArticleSchema = new Schema({
 
     // required: true
 
-  }
+  },
+    isSaved: {
+      type: Boolean,
+      default: false, 
+
+    }
+  
 });
 
 // This creates our model from the above schema, using mongoose's model method

@@ -1,32 +1,64 @@
 console.log('loaded');
 $(function () {
 // scrape database for articles and load /articles 
-  $('#scrape-btn').on('click', function () {
-   document.location.href='/articles';
-  });
+
+
+
+
+  // $('#scrape-btn').on('click', function () {
+  //  document.location.href='/articles';
+  // });
 
 })
 
-  // save article button onclick
+// scrape website and push data to database on click
+
+$(document).on('click', '#scrape-btn', function(){
+  $.ajax({
+    method: "GET",
+    url: "/articles"
+  }). then(function(data) {
+    console.log(data);
+       document.location.href='/articles';
+ 
+  })
+ });
+
+
+
+
+
+  // update isSaved to true to save article 
 
 $(document).on('click', '#save-btn', function(){
-  console.log('clicked')
+  // data id attr 
     const id = $(this).attr("data-id")
-     console.log(id)
-
-
+    // isSaved boolean
+    const isSaved = $(this).attr("isSaved")
+    // row id so that I can remove it on click
+    const thisRow = $(`#row-${id}`);
+    // remove the article on click
+    $(thisRow).remove();    
+    
      $.ajax({
-       method: "GET",
+       method: "PUT",
        url: `/saved/${id}`
      })
-     .then(function(data){
+     .then(function(data) {
        console.log(data);
-       document.location.href=`/saved/${id}`;
-
      })
 })
 
-// 
+
+$(document).on('click', '#saved-articles-btn', function(){
+  $.ajax({
+    method: "GET",
+    url: "/saved"
+  }).then(function(){
+    document.location.href='/saved';
+
+  })
+})
 
 
 

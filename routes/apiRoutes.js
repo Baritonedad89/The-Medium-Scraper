@@ -15,13 +15,13 @@ module.exports = function (app) {
   // scrape medium site and get push all articles to database
   app.get("/", function (req, res) {
     // empty the collection before scraping for new items so that no duplicates
-    db.Article.remove(function (err, p) {
-      if (err) {
-        throw err;
-      } else {
-        console.log('No Of Documents deleted:' + JSON.stringify(p));
-      }
-    });
+    // db.Article.deleteMany(function (err, p) {
+    //   if (err) {
+    //     throw err;
+    //   } else {
+    //     console.log('No Of Documents deleted:' + JSON.stringify(p));
+    //   }
+    // });
     // axios call to fetch data from website 
     axios.get("https://medium.com/topic/culture").then(function (response) {
 
@@ -41,15 +41,21 @@ module.exports = function (app) {
       })
 
     }).then(function (scrapes) {
-      res.json(scrapes)
+      res.json(scrapes);
+      
 
     })
-    res.render('home')
+    .catch(function(err) {
+      // If an error occurred, log it
+      console.log(err);
+    });
+    // res.redirect("/articles")
+      res.render('home')
 
-  });
-
-
+  })
 }
+
+
 
 
 

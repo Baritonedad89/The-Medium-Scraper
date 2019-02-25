@@ -6,7 +6,7 @@
           <a href="/" class="brand-logo black-text"><span style="font-family: 'Abril Fatface', cursive; font-size: 28px;
 ">Medium</span> | <span style="font-size: 24px">Scraper</span></a>
           <ul class="right hide-on-med-and-down">
-          <li><a href="#" class="black-text">Home</a></li>
+          <li><a href="/" class="black-text">Home</a></li>
           <li><a class="waves-effect waves-light btn">Clear Articles!</a></li>
         </ul>
         </div>
@@ -14,8 +14,8 @@
     </nav>
   </div>
 
-{{#each saved}}
-{{#if headline}}
+{{#each savedArticles}}
+{{#if isSaved}}
 <div class="row">
         <div class="col l12">
           <div class="card light-blue darken-4">
@@ -24,7 +24,8 @@
               <p data-id="{{this._id}}">{{this.summary}}</p>
             </div>
             <div class="card-action">
-              <a class="waves-effect waves-light btn" id="save-btn" data-id={{this._id}}>Save Article</a>
+              <a class="waves-effect waves-light btn" id="save-btn" data-id={{this._id}}>deleted from saved</a>
+              <a class="waves-effect waves-light btn" id="save-btn" data-id={{this._id}}>article notes</a>
 
             </div>
           </div>

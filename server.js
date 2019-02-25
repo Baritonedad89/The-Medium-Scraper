@@ -36,7 +36,7 @@ require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
 // make connection to mongoose
-mongoose.connect('mongodb://localhost:27017/myapp', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/mediumScraper', {useNewUrlParser: true});
 
 // Database configuration
 // const databaseUrl = "mediumScraper";
