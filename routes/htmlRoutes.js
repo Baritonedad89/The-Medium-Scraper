@@ -2,9 +2,11 @@ var db = require("../models");
 
 module.exports = function (app) {
 
-
-  app.get("/articles", function (req, res) {
-    db.Article.find({}, (error, dbArticle) => {
+// display all articles where isSaved == false 
+  app.get("/", function (req, res) {
+    db.Article.find({
+      isSaved: false
+    }, (error, dbArticle) => {
       if (error) {
         console.log(error);
       }
@@ -16,31 +18,8 @@ module.exports = function (app) {
 
   });
 
-  // db.places.update({"country": "Morocco"}, {$set: {"continent": "Antarctica"}})
-  app.put('/saved/:id', function (req, res) {
-    const id = req.params.id;
-    console.log(id)
-    db.Article.update(
-      {
-        "_id": id
-      },
-      {
-        $set: {
-          "isSaved": true
-        }
-      },
-      function (err, savedArticle) {
-        if (err) {
-          console.log(err);
-          res.send(err);
-        }
-        else {
-          console.log(savedArticle);
-        }
-      }
-    );
+  
 
-  });
 
 
   app.get('/saved', function (req, res) {

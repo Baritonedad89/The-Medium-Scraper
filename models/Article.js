@@ -9,13 +9,13 @@ var ArticleSchema = new Schema({
   // `title` is required and of type String
   headline: {
     type: String,
-    unique: true,
+    // unique: true,
     // required: true
   },
   // `link` is required and of type String
   summary: {
     type: String,
-    unique: true,
+    // unique: true,
 
     // required: true
   },
@@ -24,7 +24,7 @@ var ArticleSchema = new Schema({
   // This allows us to populate the Article with an associated Note
   url: {
     type: String,
-    unique: true,
+    // unique: true,
 
     // required: true
 
@@ -42,3 +42,7 @@ const Article = mongoose.model("Article", ArticleSchema);
 
 // Export the Article model
 module.exports = Article;
+
+
+
+

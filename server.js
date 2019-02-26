@@ -38,9 +38,6 @@ require("./routes/htmlRoutes")(app);
 // make connection to mongoose
 mongoose.connect('mongodb://localhost:27017/mediumScraper', {useNewUrlParser: true});
 
-// Database configuration
-// const databaseUrl = "mediumScraper";
-// const collections = ["scrapedData"];
 
 
 
@@ -50,7 +47,7 @@ mongoose.connect('mongodb://localhost:27017/mediumScraper', {useNewUrlParser: tr
 
  // Start the server
 app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
+    console.log(`App running on http://localhost:${PORT} !`);
   });
 
   module.exports = app;

@@ -9,7 +9,7 @@
           <li><a href="/" class="black-text">Home</a></li>
           <li><a  id="saved-articles-btn" class="black-text">Saved Articles</a></li>
           <li><a class="waves-effect waves-light btn" id="scrape-btn">Scrape Articles!</a></li>
-          <li><a class="waves-effect waves-light btn">Clear Articles!</a></li>
+          <li><a class="waves-effect waves-light btn" id="clear-all-btn">Clear Articles!</a></li>
         </ul>
         </div>
       </div>
@@ -19,13 +19,13 @@
 
 
 <div class="container container-top">
-  <div class="row">
+  <div class="row" id="articles-row">
     <div class="col l12">
 
 
 
       {{#each articles}}
-      {{#unless this.isSaved}}
+
       <div class="row" id="row-{{this._id}}">
         <div class="col l12">
           <div class="card light-blue darken-4">
@@ -40,6 +40,7 @@
           </div>
         </div>
       </div>
-      {{/unless}}
+      {{else}}
+      <h1>No data here</h1>
       {{/each}}
       
