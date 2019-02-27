@@ -16,7 +16,7 @@
 
     </nav>
   </div>
-
+  <div class="container-fluid" id="big-div"></div>
 
 <div class="container container-top">
   <div class="row" id="articles-row">
@@ -41,6 +41,22 @@
         </div>
       </div>
       {{else}}
-      <h1>No data here</h1>
+<div class="row">
+    <div class="col l12">
+      <div class="card red">
+        <div class="card-content white-text">
+          <span class="card-title o">Looks like there's no articles</span>
+          <p>What would you like to do?</p>
+        </div>
+        <div class="card-action">
+          <a href="" id="scrape-btn">Try scraping articles</a>
+          <a href="" id="saved-articles-btn">Go to saved articles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
       {{/each}}
       

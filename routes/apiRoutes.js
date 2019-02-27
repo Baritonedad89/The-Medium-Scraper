@@ -7,24 +7,24 @@ const mongoose = require("mongoose");
 
 
 module.exports = function (app) {
-  
+
   // scrape medium site and get push all articles to database
   app.get("/api/headlines", function (req, res) {
 
-    
+
     // axios call to fetch data from website 
     axios.get("https://medium.com/topic/culture").then(function (response) {
 
       let $ = cheerio.load(response.data);
 
-// empty the collection before scraping for new items so that no duplicates
-    db.Article.deleteMany(function (err, p) {
-      if (err) {
-        throw err;
-      } else {
-        console.log('No Of Documents deleted:' + JSON.stringify(p));
-      }
-    });
+      // empty the collection before scraping for new items so that no duplicates
+      db.Article.deleteMany(function (err, p) {
+        if (err) {
+          throw err;
+        } else {
+          console.log('No Of Documents deleted:' + JSON.stringify(p));
+        }
+      });
 
       $('div.dp').each(function (i, element) {
         let headline = $(element).find('h3.ai').find('a').text();
@@ -41,22 +41,22 @@ module.exports = function (app) {
       return []
     }).then(function (scrapes) {
       res.json(scrapes);
-      
+
 
     })
-    .catch(function(err) {
-      // If an error occurred, log it
-      console.log(err);
-    });
+      .catch(function (err) {
+        // If an error occurred, log it
+        console.log(err);
+      });
     // res.redirect("/articles")
-      // res.render('home')
+    // res.render('home')
 
   });
 
 
 
 
-app.put('/api/headlines/saved/:id', function (req, res) {
+  app.put('/api/headlines/saved/:id', function (req, res) {
     const id = req.params.id;
     console.log(id)
     db.Article.update(
@@ -74,6 +74,8 @@ app.put('/api/headlines/saved/:id', function (req, res) {
           res.send(err);
         }
         else {
+          res.render("articles", { articles: savedArticle });
+
           console.log(savedArticle);
         }
       }
@@ -81,7 +83,7 @@ app.put('/api/headlines/saved/:id', function (req, res) {
 
   });
 
-app.put('/api/headlines/saved/delete-saved/:id', function (req, res) {
+  app.put('/api/headlines/saved/delete-saved/:id', function (req, res) {
     const id = req.params.id;
     console.log(id)
     db.Article.update(
@@ -99,7 +101,9 @@ app.put('/api/headlines/saved/delete-saved/:id', function (req, res) {
           res.send(err);
         }
         else {
+
           console.log(savedArticle);
+          res.render('saved', { savedArticles: savedArticle })
         }
       }
     );
@@ -111,20 +115,51 @@ app.put('/api/headlines/saved/delete-saved/:id', function (req, res) {
 
 
 
-//   // db.[COLLECTION_NAME].drop()
-app.delete('/api/headlines/clear-all', function(req, res) {
-  db.Article.deleteMany(function (err, p) {
-    if (err) {
-      throw err;
-    } else {
-      console.log('No Of Documents deleted:' + JSON.stringify(p));
-      res.render("articles", { articles: p });
+  //   // db.[COLLECTION_NAME].drop()
+  app.delete('/api/headlines/clear-all', function (req, res) {
+    db.Article.deleteMany(function (err, p) {
+      if (err) {
+        throw err;
+      } else {
+        console.log('No Of Documents deleted:' + JSON.stringify(p));
+        res.render("articles", { articles: p });
 
-    }
+      }
+    });
+  });
+
+  app.post('/api/comment/post/:id', function (req, res) {
+    const id = req.params.id;
+    const name = req.query.name;
+    const comment = req.query.comment;
+    db.Comment.create({
+      name: name,
+      comment: comment,
+      dateCreated: Date.now()
+    })
+      .then(function (dbComment) {
+
+        return db.Article.findOneAndUpdate({ _id: id }, { $push: {comments: dbComment} });
+      })
+      .then(function (dbArticle) {
+        res.json(dbArticle);
+      })
+      .catch(function (err) {
+        res.json(err);
+      })
   });
 
 
-})
+
+
+
+
+
+
+
+
+
+
 
 }
 

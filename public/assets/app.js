@@ -1,4 +1,11 @@
 console.log('loaded');
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
+
+$(document).ready(function(){
+  $('.modal').modal();
+});
 
 // get data on root load 
 $(document).ready(function(){
@@ -22,48 +29,10 @@ $(document).on('click', '#scrape-btn', function () {
 });
 
 
-// update isSaved to true to save article 
-// $(document).on('click', '#save-btn', function(){
-//   // data id attr 
-//     const id = $(this).attr("data-id")
-//     // isSaved boolean
-//     const isSaved = $(this).attr("isSaved")
-//     // row id so that I can remove it on click
-//     const thisRow = $(`#row-${id}`);
-//     // remove the article on click
-//     $(thisRow).remove();    
-
-//      $.ajax({
-//        method: "PUT",
-//        url: `/api/headlines/saved/${id}`
-//      })
-//      .then(function(data) {
-//        console.log(data);
-//      })
-// });
-
-// $(document).on('click', '#delete-saved', function(){
-//   // data id attr 
-//     const id = $(this).attr("data-id")
-//     // isSaved boolean
-//     const isSaved = $(this).attr("isSaved")
-//     // row id so that I can remove it on click
-//     const thisRow = $(`#row-${id}`);
-//     // remove the article on click
-//     $(thisRow).remove();    
-
-//      $.ajax({
-//        method: "PUT",
-//        url: `/api/headlines/saved/delete-saved/${id}`
-//      })
-//      .then(function(data) {
-//        console.log(data);
-//      })
-// });
 
 // // function that updates isSaved to either true or false to save article 
 
-const changeSaved = (element, url) => {
+const changeSaved = (element, url, path) => {
   $(document).on('click', element, function () {
     // data id attr 
     const id = $(this).attr("data-id")
@@ -80,27 +49,19 @@ const changeSaved = (element, url) => {
     })
       .then(function (data) {
         console.log(data);
+        document.location.href = path;
+
       })
   });
 }
 
 
 
-changeSaved('#save-btn', 'api/headlines/saved');
-changeSaved('#delete-saved', 'api/headlines/saved/delete-saved');
+changeSaved('#save-btn', 'api/headlines/saved', '/');
+changeSaved('#delete-saved', 'api/headlines/saved/delete-saved', '/saved');
 
 
-
-
-
-
-
-
-
-
-
-
-$(document).on('click', '#saved-articles-btn', function () {
+$(document).on('click', '#saved-articles-btn', function() {
   $.ajax({
     method: "GET",
     url: "/saved"
@@ -112,7 +73,7 @@ $(document).on('click', '#saved-articles-btn', function () {
 
 
 
-$(document).on('click', '#clear-all-btn', function () {
+$(document).on('click', '#clear-all-btn', function() {
   $('#articles-row').empty()
   $.ajax({
     method: "DELETE",
@@ -120,6 +81,20 @@ $(document).on('click', '#clear-all-btn', function () {
   }).then(function () {
     document.location.href = '/';
 
+  })
+});
+
+$(document).on('click', '#comment-submit-btn', function(){
+  const name = $('#name').val().trim();
+  const comment = $('#comment').val().trim();
+  const id = $(this).attr('data-id');
+  console.log(`${name} says "${comment}"`);
+  console.log('id', id)
+  $.ajax({
+    method: "POST",
+    url: `api/comment/post/${id}?name=${name}&comment=${comment}`
+  }).then(function(){
+    document.location.href = '/saved'
   })
 });
 
