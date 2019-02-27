@@ -139,7 +139,7 @@ module.exports = function (app) {
     })
       .then(function (dbComment) {
 
-        return db.Article.findOneAndUpdate({ _id: id }, { $push: {comments: dbComment} });
+        return db.Article.findOneAndUpdate({ _id: id }, { $push: { comments: dbComment } });
       })
       .then(function (dbArticle) {
         res.json(dbArticle);

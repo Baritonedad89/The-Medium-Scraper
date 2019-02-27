@@ -98,6 +98,13 @@ $(document).on('click', '#comment-submit-btn', function(){
   })
 });
 
+$(document).ready(function(){
+  $.getJSON('/populated', function(data){
+console.log(data);
+})
+})
+
+
 
 
 

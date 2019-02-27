@@ -39,8 +39,15 @@
         </div>
         <ul class="collapsible">
           <li>
-            <div class="collapsible-header">Comments for "{{this.headline}}</div>
-            <div class="collapsible-body"><span></span></div>
+            <div class="collapsible-header">
+              <div class="col l10">
+                <span>Comments for "{{this.headline}}</span>
+              </div>
+              <div class="col l2">
+                <span>{{this.comments.length}} comments</span>
+              </div>
+            </div>
+            <div class="collapsible-body"><span>{{this}}</span></div>
           </li>
         </ul>
 
@@ -50,21 +57,22 @@
           <div class="modal-content">
             <div class="row" data-id="{{this._id}}">
               <div class="input-field col s6">
-                <input id="name"  data-id="{{this._id}}"type="text" class="validate">
+                <input id="name" data-id="{{this._id}}" type="text" class="validate">
                 <label for="name">Name</label>
               </div>
             </div>
             <div class="row" data-id="{{this._id}}">
               <div class="col s12">
                 <div class="input-field">
-                  <textarea id="comment"  data-id="{{this._id}}"class="materialize-textarea"></textarea>
+                  <textarea id="comment" data-id="{{this._id}}" class="materialize-textarea"></textarea>
                   <label for="comment">Textarea</label>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <a href="#!" data-id="{{this._id}}" id="comment-submit-btn"class="modal-close waves-effect waves-green btn-flat">Submit</a>
+            <a href="#!" data-id="{{this._id}}" id="comment-submit-btn"
+              class="modal-close waves-effect waves-green btn-flat">Submit</a>
           </div>
         </div>
         {{/if}}
