@@ -84,10 +84,10 @@ $(document).on('click', '#clear-all-btn', function() {
   })
 });
 
-$(document).on('click', '#comment-submit-btn', function(){
-  const name = $('#name').val().trim();
-  const comment = $('#comment').val().trim();
+$(document).on('click', '#comment-submit-btn', function() {
   const id = $(this).attr('data-id');
+  const name = $(`#name-${id}`).val().trim();
+  const comment = $(`#comment-${id}`).val().trim();
   console.log(`${name} says "${comment}"`);
   console.log('id', id)
   $.ajax({
@@ -95,14 +95,12 @@ $(document).on('click', '#comment-submit-btn', function(){
     url: `api/comment/post/${id}?name=${name}&comment=${comment}`
   }).then(function(){
     document.location.href = '/saved'
+
   })
 });
 
-$(document).ready(function(){
-  $.getJSON('/populated', function(data){
-console.log(data);
-})
-})
+
+
 
 
 
