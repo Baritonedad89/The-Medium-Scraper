@@ -47,7 +47,18 @@
                 <span>{{this.comments.length}} comments</span>
               </div>
             </div>
-            <div class="collapsible-body"><span>{{this}}</span></div>
+
+
+
+            <div class="collapsible-body">
+                      {{#each this.comments}}
+
+              <div>{{name}} says "{{comment}}"</div>
+              {{/each}}
+              
+              </div>
+          
+          
           </li>
         </ul>
 

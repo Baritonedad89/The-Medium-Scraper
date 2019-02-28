@@ -1,8 +1,8 @@
-var db = require("../models");
+const db = require("../models");
 
 module.exports = function (app) {
 
-// display all articles where isSaved == false 
+  // display all articles where isSaved == false 
   app.get("/", function (req, res) {
     db.Article.find({
       isSaved: false
@@ -18,32 +18,32 @@ module.exports = function (app) {
 
   });
 
-  
+
 
 
 
   app.get('/saved', function (req, res) {
     db.Article.find({
       isSaved: true
-    }, (err, savedArticles) => {
-      if (err) {
-        console.log(err);
-      }
-      console.log(savedArticles)
-      res.render("saved", { savedArticles: savedArticles });
-    });
-    
-  })
-
-  app.get('/populated', function (req, res) {
-    db.Article.find({}
-      .populate('comments')
-      .then(function (dbArticles) {
-        console.log(dbArticles)
-        res.render('saved', { comment_articles: dbArticles })
+    }).populate('comments')
+      .then((savedArticles) => {
+        console.log(savedArticles)
+        res.render("saved", { savedArticles: savedArticles });
+      }).catch(err => {
+          console.log(err);
       })
-    )
-  })
+
+})
+
+// app.get('/populated', function (req, res) {
+//   db.Article.find({}
+//     .populate('comments')
+//     .then(function (dbArticles) {
+//       console.log(dbArticles)
+//       res.render('saved', { comment_articles: dbArticles })
+//     })
+//   )
+// })
 
 
 
