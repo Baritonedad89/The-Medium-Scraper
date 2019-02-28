@@ -1,4 +1,6 @@
 console.log('loaded');
+
+
 $(document).ready(function(){
   $('.collapsible').collapsible();
 });
@@ -98,6 +100,23 @@ $(document).on('click', '#comment-submit-btn', function() {
 
   })
 });
+
+
+// delete comment 
+$(document).on('click', '#delete-comment-btn', function(){
+  const id = $(this).attr('data-id');
+  console.log('id', id)
+
+  $(`#comment-${id}`).empty();
+  $.ajax({
+    method: "DELETE",
+    url: `/api/comment/delete/${id}`
+  }).then(function () {
+    document.location.href = '/saved';
+
+  })
+
+})
 
 
 

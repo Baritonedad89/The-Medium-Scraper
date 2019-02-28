@@ -37,7 +37,7 @@
             </div>
           </div>
         </div>
-<!-- Modal Structure -->
+        <!-- Modal Structure -->
         <div id="modal-{{this._id}}" class="modal">
           <div class="modal-content">
             <div class="row" data-id="{{this._id}}">
@@ -76,19 +76,29 @@
 
 
             <div class="collapsible-body">
-              {{#each this.comments}}
+              <ul class="collection">
+                {{#each this.comments}}
+                <div class="row">
+                  <div class="col l11">
+                    <li class="collection-item" id ='comment-{{_id}}'>{{dateCreated}} - {{name}} says "{{comment}}"</li>
 
-              <div>{{name}} says "{{comment}}"</div>
-              {{/each}}
+                  </div>
+                  <div class="col l1">
+                    <i data-id={{_id}} id='delete-comment-btn' class="fas fa-minus-circle"></i>
+
+                  </div>
+
+                </div>
+                {{/each}}
+              </ul>
 
             </div>
 
 
-          </li>
-        </ul>
+         
 
 
-        
+
         {{/if}}
         {{/each}}
       </div>

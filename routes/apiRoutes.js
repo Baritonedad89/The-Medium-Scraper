@@ -2,6 +2,7 @@ const db = require("../models");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const mongoose = require("mongoose");
+const moment = require("moment")
 
 
 
@@ -126,6 +127,18 @@ module.exports = function (app) {
 
       }
     });
+  });
+
+  app.delete('/api/comment/delete/:id', function (req,res) {
+    const id = req.params.id;
+
+    db.Comment.remove({_id: id}, function(err, p){
+      if(err){
+        throw err;
+      } else {
+        res.render('saved',{articles: p})
+      }
+    })
   });
 
   app.post('/api/comment/post/:id', function (req, res) {
