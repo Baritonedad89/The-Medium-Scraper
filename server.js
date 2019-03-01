@@ -9,8 +9,7 @@ const moment = require('moment');
 const app = express();
 
 // PORT
-const PORT = 3000;
-
+const PORT = process.env.PORT || 3000;
 // const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhose/mongoHeadlines';
 // Mongoose.connect(MONGODB_URI);
 
