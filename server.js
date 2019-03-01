@@ -36,8 +36,13 @@ app.set('view engine', 'handlebars');
 require('./routes/apiRoutes')(app);
 require('./routes/htmlRoutes')(app);
 
+// If deployed, use the deployed database. Otherwiese use the local mongoHeadlines database
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mediumScraper'
+
+
+
 // make connection to mongoose
-mongoose.connect('mongodb://localhost:27017/mediumScraper', {useNewUrlParser: true});
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
 
 
