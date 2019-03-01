@@ -18,10 +18,11 @@ Here is the site https://shielded-river-77570.herokuapp.com/
 [3]: https://mongoosejs.com
 [4]: https://npmjs.com/package/cheerio
 [5]: https://npmjs.com/package/axios
+[6]: https://momentjs.com
 
 
 ## Further development
-I would like to figure out a way to get moment.js involved to create a more user friend time stamp for the comment section. 
+I would like to figure out a way to get [moment.js][6] involved to create a more user friendly time stamp for the comment section. 
 
 
 
