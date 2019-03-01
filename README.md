@@ -8,7 +8,9 @@ A web app that lets users view and leave comments on the latest news. This app u
 * [Cheerio][4]
 * [Axios][5] 
 
-![homepage]('https://lh3.googleusercontent.com/pYdXW6QMQj_hF85NpTeVl2w8fKe-3_WX5TGjsaxszZdlzvbxhZG0pjDxcrLvkfaD20f5m_TN9Qig2xlL0J2fYIurk9UOLzuUzF4BCuSqNCsHoBs_is7fE2miC0G5FCPfHXM-pvroEw=w2400')
+Here is the site https://shielded-river-77570.herokuapp.com/
+
+![homepage](https://lh3.googleusercontent.com/zBfFU3Kz1lrJU6l3fxuPzgFGL3GqAo6SGvLltGhAMkKciwTSMUD2qCoJQqd51f3tVkTe292Qn9uMEQfik8qad3y6Mw-JwwD3iAr66dYV1RMG-w7LWZJRfu0bHF_xEz4uAps3lXm4PA=w2400)
 
 
 [1]: https://expressjs.com
@@ -16,6 +18,10 @@ A web app that lets users view and leave comments on the latest news. This app u
 [3]: https://mongoosejs.com
 [4]: https://npmjs.com/package/cheerio
 [5]: https://npmjs.com/package/axios
+
+
+## Further development
+I would like to figure out a way to get moment.js involved to create a more user friend time stamp for the comment section. 
 
 
 
