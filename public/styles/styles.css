@@ -5,11 +5,14 @@
   line-height: 2.5;
 }
 
-
-
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
+}
+
+.far {
+  text-decoration: none !important;
+  color: teal;
 }
 
 .container-top {
@@ -27,11 +30,7 @@ a {
   background: blue;
   padding: 20px 20px; 
 }
-/* 
-.container-fluid {
-  background-image: url('/images/rawpixel-623442-unsplash.jpg');
-  background-size: cover;
-} */
+
 
 o{
   color: black;
@@ -41,6 +40,12 @@ o{
 a:hover {
   text-decoration: none !important;
 }
+
+/* a.top-buttons:hover {
+  text-decoration: none !important;
+
+} */
+
 
 .fa-minus-circle {
   color: red;
@@ -57,9 +62,6 @@ a:hover {
   border-radius: 5px;
 }
 
-.top-buttons:hover {
-  text-decoration: none !important;
-}
 
 #saved-articles-btn {
   color: teal; 

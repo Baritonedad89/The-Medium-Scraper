@@ -3,8 +3,8 @@
     <nav class='white'>
       <div class='container'>
         <div class='nav-wrapper'>
-  <a href='/' class='brand-logo black-text'><span style='font-family: `Playfair Display`, serif; font-weight: 800; font-size: 28px;
-'>Medium</span> <span style='color: grey; font-weight:100; opacity:0.3'>|</span> <span style='font-size: 22px; font-weight:300'>Saved Articles</span></a>
+          <a href='/' class='brand-logo black-text'><span style="font-family: 'Playfair Display', serif; font-weight: 800; font-size: 28px;"">Medium</span> <span style='color: grey; font-weight:100; opacity:0.3'>|</span> <span
+              style='font-size: 22px; font-weight:300'>Saved Articles</span></a>
           <ul class='right hide-on-med-and-down'>
             <li><a href='/' class='black-text'>Home</a></li>
             <li><a class='btn top-buttons' id='clear-all-btn'>Clear Articles!</a></li>
@@ -24,16 +24,17 @@
             <div class='col l12'>
               <div class='card'>
                 <div class='card-content'>
-                  <span style="font-weight:bold; font-family:'Noto Sans KR', sans-serif; font-size: 20px" class='card-title'><a href='{{this.url}}' target='_blank'
+                  <span style="font-weight:bold; font-family:'Noto Sans KR', sans-serif; font-size: 20px"
+                    class='card-title'><a href='{{this.url}}' target='_blank'
                       data-id='{{this._id}}'>{{this.headline}}</a></span>
-                  <p class='grey-text text-darken-2' style="font-family: 'Noto Sans JP', sans-serif;"" data-id='{{this._id}}'>{{this.summary}}</p>
+                  <p class='grey-text text-darken-2' style="font-family: 'Noto Sans JP', sans-serif;"
+                    data-id='{{this._id}}'>{{this.summary}}</p>
                 </div>
                 <div class='card-action right-align'>
-                  <i class='fas fa-trash-alt fa-2x' id='delete-saved' data-id={{this._id}} style='padding-right: 20px; color: teal;'></i>
-                 
-
-                  <i class='fas fa-comments modal-trigger fa-2x' id='comment-btn' href='#modal-{{this._id}}' data-id={{this._id}} style="color: teal;"></i>
-                 
+                  <a href='#'><i class='fas fa-trash-alt fa-2x' id='delete-saved' data-id={{this._id}}
+                      style='padding-right: 20px; color: teal'></i></a>
+                  <a href='#'><i class='fas fa-comments modal-trigger fa-2x' id='comment-btn' href='#modal-{{this._id}}'
+                      data-id={{this._id}} style="color: teal;"></i></a>
                 </div>
               </div>
             </div>
@@ -41,41 +42,37 @@
 
           <div class='row'>
             <div class="col l12">
-
-
-          <ul class='collapsible'>
-            <li>
-              <div class='collapsible-header'>
-                <div class='col l10'>
-                  <span>Comments for '{{this.headline}}</span>
-                </div>
-                <div class='col l2'>
-                  <span>{{this.comments.length}} comment(s)</span>
-                </div>
-              </div>
-
-
-              {{#each comments}}
-
-              <div class='collapsible-body'>
-
-                <ul class='collection'>
-                  <div class='row'>
-                    <div class='col l11'>
-                      <li class='collection-item' id='comment-{{_id}}'>{{dateCreated}} - {{name}} says '{{comment}}'
-                      </li>
+              <ul class='collapsible'>
+                <li>
+                  <div class='collapsible-header'>
+                    <div class='col l10'>
+                      <span>Comments for '{{this.headline}}</span>
                     </div>
-                    <div class='col l1'>
-                      <i data-id={{_id}} id='delete-comment-btn' class='fas fa-minus-circle fa-2x'></i>
+                    <div class='col l2'>
+                      <span>{{this.comments.length}} comment(s)</span>
                     </div>
                   </div>
-                  {{/each}}
-                </ul>
-              </div>
-        </div>
-                    </div>
 
-</div>
+
+                  {{#each comments}}
+
+                  <div class='collapsible-body'>
+                    <ul class='collection'>
+                      <div class='row'>
+                        <div class='col l11'>
+                          <li class='collection-item' id='comment-{{_id}}'>{{dateCreated}} - {{name}} says '{{comment}}'
+                          </li>
+                        </div>
+                        <div class='col l1'>
+                          <i data-id={{_id}} id='delete-comment-btn' class='fas fa-minus-circle fa-2x'></i>
+                        </div>
+                      </div>
+                      {{/each}}
+                    </ul>
+                  </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Modal Structure -->
         <div id='modal-{{this._id}}' class='modal'>

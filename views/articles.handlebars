@@ -28,18 +28,12 @@
   </div>
 </div>
 
-  {{!-- <div class='container container-top'
-    style='background-image: url("/images/dan-farrell-1277199-unsplash.jpg"); height: 400px; width: 100%; background-size: contain; background-repeat: no-repeat'>
-  </div> --}}
+
   
   <div class='container article-container'>
     <div class='row' id='articles-row'>
       <div class='col l12'>
-
-
-
         {{#each articles}}
-
         <div class='row' id='row-{{this._id}}'>
           <div class='col l12'>
             <div class='card '>
@@ -51,7 +45,7 @@
                   data-id='{{this._id}}'>{{this.summary}}</p>
               </div>
               <div class='card-action right-align'>
-                <i class="far fa-bookmark fa-2x" isSaved={{this.isSaved}} id='save-btn' data-id={{this._id}}></i>
+                <a href='#'><i class="far fa-bookmark fa-2x" isSaved={{this.isSaved}} id='save-btn' data-id={{this._id}}></i></a>
               </div>
             </div>
           </div>
@@ -73,7 +67,4 @@
             </div>
           </div>
         </div>
-
-
-
         {{/each}}
