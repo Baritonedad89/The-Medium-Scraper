@@ -1,4 +1,5 @@
-var mongoose = require("mongoose");
+
+var mongoose = require('mongoose');
 const moment = require('moment')
 
 // Save a reference to the Schema constructor
@@ -26,7 +27,7 @@ var CommentSchema = new Schema({
 });
 
 // This creates our model from the above schema, using mongoose's model method
-var Comment = mongoose.model("Comment", CommentSchema);
+var Comment = mongoose.model('Comment', CommentSchema);
 
 // Export the Library model
 module.exports = Comment;

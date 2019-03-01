@@ -5,10 +5,7 @@
   line-height: 2.5;
 }
 
-#big-div {
-  background-image: url('./images/bhawin-jagad-710758-unsplash.jpg');
-  
-}
+
 
 a {
   text-decoration: none;
@@ -16,7 +13,10 @@ a {
 }
 
 .container-top {
-  margin-top: 450px;
+  margin-top: 50px;
+}
+.article-container {
+  margin-top: 50px;
 }
 
 .article-blocks {
@@ -36,4 +36,31 @@ a {
 o{
   color: black;
   font-weight: 800;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+.fa-minus-circle {
+  color: red;
+}
+
+.fa-minus-circle:hover {
+  opacity: 0.7;
+}
+
+.top-buttons {
+  background: white;
+  color: teal;
+  border: 1px solid teal;
+  border-radius: 5px;
+}
+
+.top-buttons:hover {
+  text-decoration: none !important;
+}
+
+#saved-articles-btn {
+  color: teal; 
 }

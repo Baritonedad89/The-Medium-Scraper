@@ -1,62 +1,67 @@
-<div class="grey lighten-5">
-  <div class="navbar-fixed ">
-    <nav class="white">
-      <div class="container">
-        <div class="nav-wrapper">
-          <a href="/" class="brand-logo black-text"><span style="font-family: 'Abril Fatface', cursive; font-size: 28px;
-">Medium</span> | <span style="font-size: 24px">Scraper</span></a>
-          <ul class="right hide-on-med-and-down">
-          <li><a href="/" class="black-text">Home</a></li>
-          <li><a  id="saved-articles-btn" class="black-text">Saved Articles</a></li>
-          <li><a class="waves-effect waves-light btn" id="scrape-btn">Scrape Articles!</a></li>
-          <li><a class="waves-effect waves-light btn" id="clear-all-btn">Clear Articles!</a></li>
-        </ul>
+<div>
+  <div class='navbar-fixed '>
+    <nav class='white'>
+      <div class='container'>
+        <div class='nav-wrapper'>
+          <a href='/' class='brand-logo black-text'><span style="font-family: 'Playfair Display', serif; font-weight: 700; font-size: 28px;
+">Medium</span> <span style='color: grey; font-weight:100; opacity:0.3'>|</span> <span
+              style='font-size: 22px; font-weight:300'>Scraper</span></a>
+          <ul class='right hide-on-med-and-down'>
+            <li><a href='/' class='black-text'>Home</a></li>
+            <li><a id='saved-articles-btn'>Saved Articles</a></li>
+            <li><a class='btn top-buttons' id='scrape-btn'>Scrape Articles!</a></li>
+            <li><a class='btn top-buttons' id='clear-all-btn'>Clear Articles!</a></li>
+          </ul>
         </div>
       </div>
 
     </nav>
   </div>
-  <div class="container-fluid" id="big-div"></div>
+  <div class='container-fluid container-top'
+    style='background-image: url("/images/dan-farrell-1277199-unsplash.jpg"); height: 400px; width: 100%; background-size: contain; background-repeat: no-repeat; margin-left: 16%'>
+  </div>
+  <div class='container article-container'>
+    <div class='row' id='articles-row'>
+      <div class='col l12'>
 
-<div class="container container-top">
-  <div class="row" id="articles-row">
-    <div class="col l12">
 
 
+        {{#each articles}}
 
-      {{#each articles}}
-
-      <div class="row" id="row-{{this._id}}">
-        <div class="col l12">
-          <div class="card light-blue darken-4">
-            <div class="card-content white-text">
-              <span class="card-title"><a href="{{this.url}}" target="_blank" data-id="{{this._id}}">{{this.headline}}</a></span>
-              <p data-id="{{this._id}}">{{this.summary}}</p>
-            </div>
-            <div class="card-action">
-              <a class="waves-effect waves-light btn" id="save-btn" isSaved={{this.isSaved}} data-id={{this._id}}>Save Article</a>
-
+        <div class='row' id='row-{{this._id}}'>
+          <div class='col l12'>
+            <div class='card '>
+              <div class='card-content'>
+                <span style="font-weight:bold; font-family:'Noto Sans KR', sans-serif; font-size: 20px"
+                  class='card-title'><a href='{{this.url}}' target='_blank'
+                    data-id='{{this._id}}'>{{this.headline}}</a></span>
+                <p class='grey-text text-darken-2' style="font-family: 'Noto Sans JP', sans-serif;"
+                  data-id='{{this._id}}'>{{this.summary}}</p>
+              </div>
+              <div class='card-action right-align'>
+                <i class="far fa-bookmark fa-2x" isSaved={{this.isSaved}} id='save-btn' data-id={{this._id}}></i>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {{else}}
-<div class="row">
-    <div class="col l12">
-      <div class="card red">
-        <div class="card-content white-text">
-          <span class="card-title o">Looks like there's no articles</span>
-          <p>What would you like to do?</p>
+        {{else}}
+        <div class='row'>
+          <div class='col l12'>
+            <div class='card'>
+              <div class='card-content'>
+                <span style="font-weight:bold; font-family:'Noto Sans KR', sans-serif; font-size: 20px"
+                  class='card-title'>Looks like there's no articles</span>
+                <p class='grey-text text-darken-2' style="font-family: 'Noto Sans JP', sans-serif;">What would you like
+                  to do?</p>
+              </div>
+              <div class='card-action'>
+                <a href='' id='scrape-btn' class='teal-text'>Try scraping articles</a>
+                <a href='' id='saved-articles-btn' class='teal-text'>Go to saved articles</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="card-action">
-          <a href="" id="scrape-btn">Try scraping articles</a>
-          <a href="" id="saved-articles-btn">Go to saved articles</a>
-        </div>
-      </div>
-    </div>
-  </div>
 
 
 
-      {{/each}}
-      
+        {{/each}}
