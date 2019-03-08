@@ -24,5 +24,9 @@ Here is the site https://shielded-river-77570.herokuapp.com/
 ## Further development
 I would like to figure out a way to get [moment.js][6] involved to create a more user friendly time stamp for the comment section. 
 
+** NOTE **
+
+Articles may not populate because medium.com sometimes changes the names of 
+their div classes.
 
 
