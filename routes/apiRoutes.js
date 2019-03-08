@@ -23,10 +23,10 @@ module.exports = function (app) {
           console.log('No Of Documents deleted:' + JSON.stringify(p));
         }
       });
-
-      $('div.dp').each(function (i, element) {
+// will need to updated these selectors to keep current 
+      $('div.l').each(function (i, element) {
         let headline = $(element).find('a').text();
-        let summary = $(element).find('div.dv').find('a').text();
+        let summary = $(element).find('div.dx').find('a').text();
         let url = $(element).find('h3.ai').find('a').attr('href')
 
         // create article document 
